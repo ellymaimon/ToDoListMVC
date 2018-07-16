@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using MySQLCore.Models;
 using ToDoList.Models;
 
 namespace ToDoList.Controllers
@@ -38,20 +39,5 @@ namespace ToDoList.Controllers
             Item thisItem = Item.Find(id);
             return View(thisItem);
         }
-
-        [HttpPost("/items/{id}/update")]
-        public ActionResult Update(int id)
-        {
-            Item thisItem = Item.Find(id);
-            thisItem.Edit(Request.Form["newname"]);
-            return RedirectToAction("Index");
-        }
-
-        // [HttpPost("/items/delete")]
-        // public ActionResult DeleteAll()
-        // {
-        //     Item.ClearAll();
-        //     return View();
-        // }
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using ToDoList.Controllers;
 using ToDoList.Models;
+using MySQLCore.Models;
 
 namespace ToDoList.Tests
 {

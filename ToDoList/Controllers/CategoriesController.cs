@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System;
 using Microsoft.AspNetCore.Mvc;
 using ToDoList.Models;
+using MySQLCore.Models;
 
 namespace ToDoList.Controllers
 {
@@ -41,18 +42,18 @@ namespace ToDoList.Controllers
         }
 
 
-        [HttpPost("/items")]
-        public ActionResult CreateItem()
-        {
-          Dictionary<string, object> model = new Dictionary<string, object>();
-          Category foundCategory = Category.Find(Int32.Parse(Request.Form["category-id"]));
-          string itemDescription = Request.Form["item-description"];
-          Item newItem = new Item(itemDescription, 1);
-          foundCategory.AddItem(newItem);
-          List<Item> categoryItems = foundCategory.GetItems();
-          model.Add("items", categoryItems);
-          model.Add("category", foundCategory);
-          return View("Details", model);
-        }
+        // [HttpPost("/items")]
+        // public ActionResult CreateItem()
+        // {
+        //   Dictionary<string, object> model = new Dictionary<string, object>();
+        //   Category foundCategory = Category.Find(Int32.Parse(Request.Form["category-id"]));
+        //   string itemDescription = Request.Form["item-description"];
+        //   Item newItem = new Item(itemDescription, 1);
+        //   foundCategory.AddItem(newItem);
+        //   List<Item> categoryItems = foundCategory.GetItems();
+        //   model.Add("items", categoryItems);
+        //   model.Add("category", foundCategory);
+        //   return View("Details", model);
+        // }
     }
 }

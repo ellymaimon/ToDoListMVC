@@ -2,6 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System;
 using ToDoList.Models;
+using MySQLCore.Models;
 
 namespace ToDoList.Tests
 {
@@ -10,7 +11,7 @@ namespace ToDoList.Tests
     {
         public CategoryTests()
         {
-            DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=3306;database=todo_test;";
+            DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=todo_test;";
         }
 
         [TestMethod]
@@ -86,24 +87,6 @@ namespace ToDoList.Tests
         {
             Item.DeleteAll();
             Category.DeleteAll();
-        }
-
-        [TestMethod]
-        public void GetItems_RetrievesAllItemsWithCategory_ItemList()
-        {
-            Category testCategory = new Category("Household chores");
-            testCategory.Save();
-
-            Item firstItem = new Item("Mow the lawn", testCategory.GetId());
-            firstItem.Save();
-            Item secondItem = new Item("Do the dishes", testCategory.GetId());
-            secondItem.Save();
-
-
-            List<Item> testItemList = new List<Item> { firstItem, secondItem };
-            List<Item> resultItemList = testCategory.GetItems();
-
-            CollectionAssert.AreEqual(testItemList, resultItemList);
         }
     }
 }
